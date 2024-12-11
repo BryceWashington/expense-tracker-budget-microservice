@@ -16,7 +16,7 @@ class BudgetData(BaseModel):
     created_at: datetime
     modified_at: datetime
     user_id: int
-    budget_type_id: int
+    budget_type_id: str
 
 class BudgetResponse(BaseModel):
     data: BudgetData
@@ -33,7 +33,7 @@ class BudgetResponse(BaseModel):
                     "created_at": "2024-10-01T17:58:20",
                     "modified_at": "2024-10-01T17:58:20",
                     "user_id": 1,
-                    "budget_type_id": 1
+                    "budget_type_id": "Food"
                 },
                 "links": [
                     {
@@ -73,7 +73,7 @@ class BudgetsResponse(BaseModel):
                             "created_at": "2024-10-01T17:58:20",
                             "modified_at": "2024-10-01T17:58:20",
                             "user_id": 1,
-                            "budget_type_id": 1
+                            "budget_type_id": "Food"
                         },
                         "links": [
                             {
@@ -102,7 +102,7 @@ class BudgetsResponse(BaseModel):
                             "created_at": "2024-10-01T17:58:20",
                             "modified_at": "2024-10-01T17:58:20",
                             "user_id": 2,
-                            "budget_type_id": 2
+                            "budget_type_id": "Transportation"
                         },
                         "links": [
                             {
@@ -161,7 +161,7 @@ class CreateBudgetResponse(BaseModel):
                     "created_at": "2024-10-01T17:58:20",
                     "modified_at": "2024-10-01T17:58:20",
                     "user_id": 2,
-                    "budget_type_id": 2
+                    "budget_type_id": "Transportation"
                 },
                 "links": [
                     {
@@ -201,7 +201,7 @@ class UpdateBudgetResponse(BaseModel):
                     "created_at": "2024-10-01T17:58:20",
                     "modified_at": "2024-10-01T17:58:20",
                     "user_id": 2,
-                    "budget_type_id": 2
+                    "budget_type_id": "Transportation"
                 },
                 "links": [
                     {

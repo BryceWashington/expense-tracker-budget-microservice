@@ -1,178 +1,182 @@
 # Expense Tracker - Budget Microservice
 
 # Endpoints - For details please check Swagger UI
-## Endpoint: GET /api/budget?user_id={user_id}&limit={limit}&offset={offset}
+## Endpoint: GET /api/budgets?user_id={user_id}&limit={limit}&offset={offset}
 ### Response Codes:
 - 200: Success
 - 500: Internal Server Error
 
-### Request and Response Example: GET /api/expenses?budget_id=1&limit=2&offset=5
+### Request and Response Example: GET /api/budgets?user_id=1&limit=2&offset=5
 #### response
 ```json
 {
-    "data": [
+  "data": [
+    {
+      "data": {
+        "amount": 1500.5,
+        "budget_type_id": "Food",
+        "created_at": "2024-10-01T17:58:20",
+        "end_date": "2024-01-31",
+        "id": 1,
+        "modified_at": "2024-10-01T17:58:20",
+        "start_date": "2024-01-01",
+        "user_id": 1
+      },
+      "links": [
         {
-            "data": {
-                "id": 10,
-                "amount": 18.00,
-                "expense_date": "2024-10-15",
-                "description": "salad",
-                "created_at": "2024-10-19T22:50:26",
-                "modified_at": "2024-10-19T22:50:26",
-                "budget_id": 1
-            },
-            "links": [
-                {
-                    "rel": "self",
-                    "href": "/api/expenses/10",
-                    "method": "GET"
-                },
-                {
-                    "rel": "update",
-                    "href": "/api/expenses/10",
-                    "method": "PUT"
-                },
-                {
-                    "rel": "delete",
-                    "href": "/api/expenses/10",
-                    "method": "DELETE"
-                }
-            ]
+          "href": "/api/budgets/1",
+          "method": "GET",
+          "rel": "self"
         },
         {
-            "data": {
-                "id": 23,
-                "amount": 244.00,
-                "expense_date": "2024-10-15",
-                "description": "pizza",
-                "created_at": "2024-10-19T22:50:26",
-                "modified_at": "2024-10-19T22:50:26",
-                "budget_id": 1
-            },
-            "links": [
-                {
-                    "rel": "self",
-                    "href": "/api/expenses/23",
-                    "method": "GET"
-                },
-                {
-                    "rel": "update",
-                    "href": "/api/expenses/23",
-                    "method": "PUT"
-                },
-                {
-                    "rel": "delete",
-                    "href": "/api/expenses/23",
-                    "method": "DELETE"
-                }
-            ]
+          "href": "/api/budgets/1",
+          "method": "PUT",
+          "rel": "update"
+        },
+        {
+          "href": "/api/budgets/1",
+          "method": "DELETE",
+          "rel": "delete"
         }
-      
-    ],
-    "links": [
+      ]
+    },
+    {
+      "data": {
+        "amount": 2500.75,
+        "budget_type_id": "Transportation",
+        "created_at": "2024-10-01T17:58:20",
+        "end_date": "2024-01-31",
+        "id": 2,
+        "modified_at": "2024-10-01T17:58:20",
+        "start_date": "2024-01-01",
+        "user_id": 2
+      },
+      "links": [
         {
-            "rel": "self",
-            "href": "/api/expenses?budget_id=1&limit=2&offset=5",
-            "method": "GET"
+          "href": "/api/budgets/2",
+          "method": "GET",
+          "rel": "self"
         },
         {
-            "rel": "next",
-            "href": "/api/expenses?budget_id=1&limit=2&offset=7",
-            "method": "GET"
+          "href": "/api/budgets/2",
+          "method": "PUT",
+          "rel": "update"
         },
         {
-            "rel": "prev",
-            "href": "/api/expenses?budget_id=1&limit=2&offset=3",
-            "method": "GET"
+          "href": "/api/budgets/2",
+          "method": "DELETE",
+          "rel": "delete"
         }
-    ]
+      ]
+    }
+  ],
+  "links": [
+    {
+      "href": "/api/budgets?user_id=1&limit=2&offset=5",
+      "method": "GET",
+      "rel": "self"
+    },
+    {
+      "href": "/api/budgets?user_id=1&limit=2&offset=7",
+      "method": "GET",
+      "rel": "next"
+    },
+    {
+      "href": "/api/budgets?user_id=1&limit=2&offset=3",
+      "method": "GET",
+      "rel": "prev"
+    }
+  ]
 }
 ```
 
-## Endpoint: GET /api/budget/{budget_id}
+## Endpoint: GET /api/budgets/{budget_id}
 ### Response Codes:
 - 200: Success
 - 404: Expense Not Found
 - 500: Internal Server Error
 
-### Request and Response Example: GET /api/expenses/21
+### Request and Response Example: GET /api/budgets/1
 #### response
 ```json
 {
-    "data": {
-        "id": 21,
-        "amount": 50.00,
-        "expense_date": "2024-10-20",
-        "description": "earbuds",
-        "created_at": "2024-10-19T23:39:36",
-        "modified_at": "2024-10-19T23:39:42",
-        "budget_id": 30
+  "data": {
+    "id": 1,
+    "amount": 1500.5,
+    "start_date": "2024-01-01",
+    "end_date": "2024-01-31",
+    "created_at": "2024-12-11T15:16:23",
+    "modified_at": "2024-12-11T15:16:23",
+    "user_id": 1,
+    "budget_type_id": "Food"
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "/api/budgets/1",
+      "method": "GET"
     },
-    "links": [
-        {
-            "rel": "self",
-            "href": "/api/expenses/21",
-            "method": "GET"
-        },
-        {
-            "rel": "update",
-            "href": "/api/expenses/21",
-            "method": "PUT"
-        },
-        {
-            "rel": "delete",
-            "href": "/api/expenses/21",
-            "method": "DELETE"
-        }
-    ]
+    {
+      "rel": "update",
+      "href": "/api/budgets/1",
+      "method": "PUT"
+    },
+    {
+      "rel": "delete",
+      "href": "/api/budgets/1",
+      "method": "DELETE"
+    }
+  ]
 }
 ```
 
-## Endpoint: PUT /api/budget/{budget_id}
+## Endpoint: PUT /api/budgets/{budget_id}
 ### Response Codes:
 - 200: Expense Updated
 - 404: Expense Not Found
 - 500: Internal Server Error
 
-### Request and Response Example: PUT /api/expenses/21
+### Request and Response Example: PUT /api/budgets/2
 #### request body
 ```json
 {
-    "amount": 50.00,
-    "expense_date": "2024-10-20",
-    "description": "earbuds"
+  "amount": 0,
+  "start_date": "2024-12-11",
+  "end_date": "2024-12-11",
+  "budget_type_id": "Transportation"
 }
 ```
 #### response
 ```json
 {
-    "message": "Expense updated",
-    "data": {
-        "id": 21,
-        "amount": 50.00,
-        "expense_date": "2024-10-20",
-        "description": "earbuds",
-        "created_at": "2024-10-19T23:39:36",
-        "modified_at": "2024-10-19T23:39:42",
-        "budget_id": 30
+  "data": {
+    "amount": 0,
+    "budget_type_id": "Transportation",
+    "created_at": "2024-10-01T17:58:20",
+    "end_date": "2024-12-11",
+    "id": 2,
+    "modified_at": "2024-10-01T17:58:20",
+    "start_date": "2024-12-11",
+    "user_id": 2
+  },
+  "links": [
+    {
+      "href": "/api/budgets/2",
+      "method": "GET",
+      "rel": "self"
     },
-    "links": [
-        {
-            "rel": "self",
-            "href": "/api/expenses/21",
-            "method": "GET"
-        },
-        {
-            "rel": "update",
-            "href": "/api/expenses/21",
-            "method": "PUT"
-        },
-        {
-            "rel": "delete",
-            "href": "/api/expenses/21",
-            "method": "DELETE"
-        }
-    ]
+    {
+      "href": "/api/budgets/2",
+      "method": "PUT",
+      "rel": "update"
+    },
+    {
+      "href": "/api/budgets/2",
+      "method": "DELETE",
+      "rel": "delete"
+    }
+  ],
+  "message": "Budget created"
 }
 ```
 
@@ -181,46 +185,48 @@
 - 201: Expense Created
 - 500: Internal Server Error
 
-### Request and Response Example: POST /api/expenses
+### Request and Response Example: POST /api/budgets
 #### request body
 ```json
 {
-    "amount": 100.00,
-    "expense_date": "2024-10-20",
-    "description": "Big Pizza",
-    "budget_id": 5
+  "amount": 2500.75,
+  "start_date": "2024-01-01",
+  "end_date": "2024-01-31",
+  "user_id": 2,
+  "budget_type_id": "Transportation"
 }
 ```
 #### response
 ```json
 {
-    "message": "Expense created",
-    "data": {
-        "id": 20,
-        "amount": 100.00,
-        "expense_date": "2024-10-20",
-        "description": "Big Pizza",
-        "created_at": "2024-10-19T23:35:23",
-        "modified_at": "2024-10-19T23:35:23",
-        "budget_id": 5
+  "data": {
+    "amount": 2500.75,
+    "budget_type_id": "Transportation",
+    "created_at": "2024-10-01T17:58:20",
+    "end_date": "2024-01-31",
+    "id": 2,
+    "modified_at": "2024-10-01T17:58:20",
+    "start_date": "2024-01-01",
+    "user_id": 2
+  },
+  "links": [
+    {
+      "href": "/api/budgets/2",
+      "method": "GET",
+      "rel": "self"
     },
-    "links": [
-        {
-            "rel": "self",
-            "href": "/api/expenses/20",
-            "method": "GET"
-        },
-        {
-            "rel": "update",
-            "href": "/api/expenses/20",
-            "method": "PUT"
-        },
-        {
-            "rel": "delete",
-            "href": "/api/expenses/20",
-            "method": "DELETE"
-        }
-    ]
+    {
+      "href": "/api/budgets/2",
+      "method": "PUT",
+      "rel": "update"
+    },
+    {
+      "href": "/api/budgets/2",
+      "method": "DELETE",
+      "rel": "delete"
+    }
+  ],
+  "message": "Budget created"
 }
 
 ```
@@ -231,10 +237,10 @@
 - 404: Expense Not Found
 - 500: Internal Server Error
 
-### Request and Response Example: DELETE /api/expenses/21
+### Request and Response Example: DELETE /api/budgets/1
 ```json
 {
-    "message": "Expense deleted"
+    "message": "Budget deleted"
 }
 ```
 
@@ -297,10 +303,6 @@ CREATE DATABASE IF NOT EXISTS budget_service;
 
 USE budget_service;
 
-CREATE TABLE IF NOT EXISTS budget_types (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(255) UNIQUE NOT NULL
-);
 
 CREATE TABLE IF NOT EXISTS budgets (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -310,8 +312,7 @@ CREATE TABLE IF NOT EXISTS budgets (
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     modified_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     user_id INT NOT NULL,
-    budget_type_id INT NOT NULL,
-    FOREIGN KEY (budget_type_id) REFERENCES budget_types(id)
+    budget_type_id VARCHAR(255) NOT NULL
 );
 ```
 
@@ -320,15 +321,12 @@ CREATE TABLE IF NOT EXISTS budgets (
 ```mysql
 USE budget_service;
 
-INSERT INTO budget_types (name) VALUES 
-    ('Food'),
-    ('Transportation'),
-    ('Entertainment');
+
 
 INSERT INTO budgets (amount, start_date, end_date, user_id, budget_type_id) VALUES 
-    (1500.50, '2024-01-01', '2024-01-31', 1, 1),
-    (2500.75, '2024-01-01', '2024-01-31', 2, 2),
-    (750.00, '2024-01-01', '2024-01-31', 3, 3);
+    (1500.50, '2024-01-01', '2024-01-31', 1, 'Food'),
+    (2500.75, '2024-01-01', '2024-01-31', 2, 'Transportation'),
+    (750.00, '2024-01-01', '2024-01-31', 3, 'Entertainment');
 ```
 
 ## How to run locally
